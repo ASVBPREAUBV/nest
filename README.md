@@ -12,6 +12,13 @@ $ npm install
 
 ## Running the app
 
+Run db for dev:
+
+```bash
+docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
+docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mariadb
+```
+Start nest
 ```bash
 # development
 $ npm run start
