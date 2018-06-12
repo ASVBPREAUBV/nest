@@ -1,4 +1,4 @@
-import {Controller, Get, HttpCode, Param, Post} from '@nestjs/common';
+import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
 import {UserProvider} from './user.provider';
 import {User} from './user.entity';
 
@@ -13,6 +13,12 @@ export class UserController {
 
     }
 
+    @Get('/test/:id')
+    @Render('index')
+    root(@Param() param) {
+        return {message: 'Hello world!', id: param.id};
+    }
+
     @Get(':id')
     async findOne(@Param() user: User) {
         return this.userProvider.create();
@@ -23,4 +29,5 @@ export class UserController {
     create() {
         return 'This action adds a new cat';
     }
+
 }
