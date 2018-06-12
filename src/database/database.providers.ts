@@ -16,5 +16,3 @@ export const databaseProviders =
             synchronize: true,
         }),
     };
-
-databaseProviders.useFactory();
