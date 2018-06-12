@@ -13,6 +13,6 @@ import {databaseProviders} from './database/database.providers';
 
 export class AppModule {
     constructor() {
-        databaseProviders.useFactory();
+        databaseProviders[0].useFactory();
     }
 }

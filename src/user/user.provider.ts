@@ -8,9 +8,8 @@ export class UserProvider {
     private readonly users: User[] = [];
 
     constructor(
-        @Inject('userDBProviders')private readonly userRepository: Repository<User>,
+        @Inject('userDBProviders') private readonly userRepository: Repository<User>,
     ) {
-        //
     }
 
     create(user: User) {
@@ -19,7 +18,6 @@ export class UserProvider {
 
     async findAll(): Promise<User[]> {
         return await this.userRepository.find();
-        //return [];
     }
 }
 
@@ -27,5 +25,5 @@ export const userDBProviders =
     {
         provide: 'userDBProviders',
         useFactory: (connection: Connection) => connection.getRepository(User),
-        inject: ['default'],
+        inject: ['defaultDB'],
     };

@@ -1,8 +1,8 @@
 import {createConnection} from 'typeorm';
 
-export const databaseProviders =
+export const databaseProviders = [
     {
-        provide: 'default',
+        provide: 'defaultDB',
         useFactory: async () => await createConnection({
             type: 'mysql',
             host: 'localhost',
@@ -15,4 +15,5 @@ export const databaseProviders =
             ],
             synchronize: true,
         }),
-    };
+    },
+];
