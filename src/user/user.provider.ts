@@ -12,8 +12,11 @@ export class UserProvider {
     ) {
     }
 
-    create(user: User) {
-        this.users.push(user);
+    async create() {
+        const user = new User();
+        user.name = 'avy';
+        user.isPublished  = false;
+        return this.userRepository.save(user);
     }
 
     async findAll(): Promise<User[]> {

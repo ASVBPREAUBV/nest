@@ -1,7 +1,6 @@
 import {Controller, Get, HttpCode, Param, Post} from '@nestjs/common';
-import {UserClass} from './user.class';
 import {UserProvider} from './user.provider';
-import {DatabaseModule} from '../database/database.module';
+import {User} from './user.entity';
 
 @Controller('users')
 export class UserController {
@@ -9,15 +8,14 @@ export class UserController {
     }
 
     @Get()
-    async allUser(): Promise<UserClass[]> {
+    async allUser(): Promise<User[]> {
         return this.userProvider.findAll();
 
     }
 
     @Get(':id')
-    findOne(@Param() userClass: UserClass) {
-        this.userProvider.create(userClass);
-        return `This action returns a user id #${userClass.id}`;
+    async findOne(@Param() user: User) {
+        return this.userProvider.create();
     }
 
     @Post()
