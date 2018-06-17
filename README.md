@@ -43,6 +43,6 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 Goals:
-[ ] User Model
-[ ] ACL
-[ ] Auth
+ - [ ] User Model
+ - [ ] ACL
+ - [ ] Auth
