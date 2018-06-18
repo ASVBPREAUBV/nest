@@ -8,4 +8,17 @@
 Index says:
 {{ message }} & {{id}}
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<script>
+    var socket = io('http://localhost:3001');
+    socket.on('connect', function () {
+    });
+    socket.emit('event', {name: 'Nest'});
+    socket.on('event', function (data) {
+        console.log(data);
+    });
+
+    socket.on('disconnect', function () {
+    });
+</script>
 </html>
