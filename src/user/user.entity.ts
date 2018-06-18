@@ -6,9 +6,9 @@ export class User {
     id: number;
 
     @Column('text')
-    name: string;
+    email: string;
 
-    @Column()
-    isPublished: boolean;
+    @Column('text')
+    password_hash: string;
 
 }
