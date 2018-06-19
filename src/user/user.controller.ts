@@ -1,7 +1,7 @@
 import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
 import {UserProvider} from './user.provider';
 import {User} from './user.entity';
-import {SubscribeMessage, WsResponse} from '@nestjs/websockets';
+import {SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
 import {from, Observable} from 'rxjs/index';
 import {map} from 'rxjs/internal/operators';
 
