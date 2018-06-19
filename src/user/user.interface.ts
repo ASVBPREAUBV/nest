@@ -1,5 +1,5 @@
 export interface UserInterface {
     id: number;
-    name: string;
-    isPublished: boolean;
+    email: string;
+    password_hash: string;
 }

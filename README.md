@@ -10,6 +10,8 @@ description
 $ npm install
 ```
 
+To run the app you need to run the db with a table called user.
+
 ## Running the app
 
 Run db for dev:
@@ -21,7 +23,7 @@ docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mariadb
 Start nest
 ```bash
 # development
-$ npm run start
+$ npm run start 
 
 # watch mode
 $ npm run start:dev

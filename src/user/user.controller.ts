@@ -1,11 +1,11 @@
-import {Controller, Get, HttpCode, Param, Post, Render} from "@nestjs/common";
-import {UserProvider} from "./user.provider";
-import {User} from "./user.entity";
-import {SubscribeMessage, WsResponse} from "@nestjs/websockets";
-import {from, Observable} from "rxjs/index";
-import {map} from "rxjs/internal/operators";
+import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
+import {UserProvider} from './user.provider';
+import {User} from './user.entity';
+import {SubscribeMessage, WsResponse} from '@nestjs/websockets';
+import {from, Observable} from 'rxjs/index';
+import {map} from 'rxjs/internal/operators';
 
-@Controller('users')
+@Controller('user')
 export class UserController {
     constructor(private readonly userProvider: UserProvider) {
     }
@@ -16,15 +16,15 @@ export class UserController {
 
     }
 
-    @Get('/test/:id')
+    @Get('/make/:id')
     @Render('index')
     root(@Param() param) {
         return {message: 'Hello world!', id: param.id};
     }
 
-    @Get(':id')
-    async findOne(@Param() user: User) {
-        return this.userProvider.create();
+    @Get(':name')
+    async findOne(@Param() param) {
+        return this.userProvider.create(param.name);
     }
 
     @Post()

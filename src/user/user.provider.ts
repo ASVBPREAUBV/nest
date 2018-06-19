@@ -12,10 +12,10 @@ export class UserProvider {
     ) {
     }
 
-    async create() {
+    async create(name:string) {
         const user = new User();
-        user.name = 'avy';
-        user.isPublished  = false;
+        user.email = name;
+        user.password_hash  = '';
         return this.userRepository.save(user);
     }
 
