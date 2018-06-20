@@ -12,7 +12,7 @@ export class UserProvider {
     ) {
     }
 
-    async create(name:string) {
+    async create(name: string) {
         const user = new User();
         user.email = name;
         user.password_hash  = '';
