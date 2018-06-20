@@ -46,7 +46,8 @@ $ npm run test:cov
 ```
 Goals:
 
+ - [ ] Init correct dev DB with Migration-Options
  - [ ] Come up with a proper websocket concept
- - [ ] User Model
+ - [ ] Better User Model
  - [ ] ACL
  - [ ] Auth
