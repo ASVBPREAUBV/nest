@@ -45,6 +45,8 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 Goals:
+
+ - [ ] Come up with a proper websocket concept
  - [ ] User Model
  - [ ] ACL
  - [ ] Auth
