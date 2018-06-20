@@ -18,6 +18,11 @@ Index says:
         console.log(data);
     });
 
+    socket.emit('user', {name: 'Nest'});
+    socket.on('user', function (data) {
+        console.log(data);
+    });
+
     socket.on('disconnect', function () {
     });
 </script>

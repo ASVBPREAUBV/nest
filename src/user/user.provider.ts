@@ -1,6 +1,9 @@
 import {Inject, Injectable} from '@nestjs/common';
 import {User} from './user.entity';
 import {Connection, Repository} from 'typeorm';
+import {SubscribeMessage, WsResponse} from '@nestjs/websockets';
+import {from, Observable} from 'rxjs/index';
+import {map} from 'rxjs/internal/operators';
 
 // Is a Provider
 @Injectable()
@@ -21,6 +24,14 @@ export class UserProvider {
 
     async findAll(): Promise<User[]> {
         return await this.userRepository.find();
+    }
+
+    @SubscribeMessage('user')
+    onEvent(client, data): Observable<WsResponse<number>> {
+        const event = 'user';
+        const response = [69, 96];
+
+        return from(response).pipe(map(res => ({event, data: res})));
     }
 }
 
