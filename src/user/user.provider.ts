@@ -1,12 +1,13 @@
 import {Inject, Injectable} from '@nestjs/common';
 import {User} from './user.entity';
 import {Connection, Repository} from 'typeorm';
-import {SubscribeMessage, WsResponse} from '@nestjs/websockets';
+import {SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
 import {from, Observable} from 'rxjs/index';
 import {map} from 'rxjs/internal/operators';
 
 // Is a Provider
 @Injectable()
+@WebSocketGateway(3001)
 export class UserProvider {
     private readonly users: User[] = [];
 

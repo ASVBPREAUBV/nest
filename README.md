@@ -15,10 +15,14 @@ To run the app you need to run the db with a table called user.
 ## Running the app
 
 Run db for dev:
-
 ```bash
 docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
 docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mariadb
+```
+Create nest db:
+```bash
+docker exec -it {your docker id} mysql -p nest
+CREATE DATABASE nest;
 ```
 Start nest
 ```bash
