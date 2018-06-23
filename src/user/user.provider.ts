@@ -9,7 +9,7 @@ import {map} from 'rxjs/internal/operators';
 @Injectable()
 @WebSocketGateway(3001)
 export class UserProvider {
-    private readonly users: User[] = [];
+    private readonly event_name = 'user';
 
     constructor(
         @Inject('userDBProviders') private readonly userRepository: Repository<User>,
@@ -28,9 +28,12 @@ export class UserProvider {
     }
 
     @SubscribeMessage('user')
-    onEvent(client, data): Observable<WsResponse<number>> {
-        const event = 'user';
-        const response = [69, 96];
+    onEvent(client, data): Observable<WsResponse<User>> {
+        const event = this.event_name
+        const user = new User();
+        user.email = name;
+        user.password_hash  = '';
+        const response = [user];
 
         return from(response).pipe(map(res => ({event, data: res})));
     }
