@@ -1,25 +1,23 @@
-import {Inject, Injectable} from '@nestjs/common';
-import {User} from './user.entity';
-import {Connection, Repository} from 'typeorm';
-import {SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
-import {from, Observable} from 'rxjs/index';
-import {map} from 'rxjs/internal/operators';
+import {Inject, Injectable} from "@nestjs/common";
+import {User} from "./user.entity";
+import {Connection, Repository} from "typeorm";
+import {SubscribeMessage, WebSocketGateway, WsResponse} from "@nestjs/websockets";
+import {from, Observable} from "rxjs/index";
+import {map} from "rxjs/internal/operators";
+import {websocket_port} from "../config";
 
 // Is a Provider
 @Injectable()
-@WebSocketGateway(3001)
+@WebSocketGateway(websocket_port)
 export class UserProvider {
-    private readonly event_name = 'user';
 
-    constructor(
-        @Inject('userDBProviders') private readonly userRepository: Repository<User>,
-    ) {
+    constructor(@Inject('userDBProviders') private readonly userRepository: Repository<User>) {
     }
 
     async create(name: string) {
         const user = new User();
         user.email = name;
-        user.password_hash  = '';
+        user.password_hash = '';
         return this.userRepository.save(user);
     }
 
@@ -28,12 +26,16 @@ export class UserProvider {
     }
 
     @SubscribeMessage('user')
-    onEvent(client, data): Observable<WsResponse<User>> {
-        const event = this.event_name
-        const user = new User();
+    onEvent(client, data): Observable<WsResponse<number>> {
+        const event = 'user';
+        /*const user = new User();
         user.email = name;
-        user.password_hash  = '';
-        const response = [user];
+        user.password_hash = '';
+*/
+        // const response = [user];
+
+        // return from(response).pipe(map(res => ({event, data: res})));
+        const response = [1, 2, 3];
 
         return from(response).pipe(map(res => ({event, data: res})));
     }

@@ -12,16 +12,19 @@ Index says:
 <script>
     var socket = io('http://localhost:3001');
     socket.on('connect', function () {
+
     });
-    socket.emit('event', {name: 'Nest'});
+
+    socket.emit('user', {name: 'name/user'});
+    socket.on('user', function (data) {
+        console.log(data);
+    });
+
+    socket.emit('event', {name: 'name/event'});
     socket.on('event', function (data) {
         console.log(data);
     });
 
-    socket.emit('user', {name: 'Nest'});
-    socket.on('user', function (data) {
-        console.log(data);
-    });
 
     socket.on('disconnect', function () {
     });
