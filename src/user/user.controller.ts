@@ -33,12 +33,4 @@ export class UserController {
         return 'This action adds a new cat';
     }
 
-    @SubscribeMessage('event')
-    onEvent(client, data): Observable<WsResponse<number>> {
-        const event = 'event';
-        const response = [1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 9];
-
-        return from(response).pipe(map(res => ({event, data: res})));
-    }
-
 }

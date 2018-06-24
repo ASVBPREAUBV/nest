@@ -2,9 +2,10 @@ import {Inject, Injectable} from "@nestjs/common";
 import {User} from "./user.entity";
 import {Connection, Repository} from "typeorm";
 import {SubscribeMessage, WebSocketGateway, WsResponse} from "@nestjs/websockets";
-import {from, Observable} from "rxjs/index";
+import {Observable} from "rxjs/index";
 import {websocket_port} from "../config";
 import {map} from "rxjs/operators";
+import {fromPromise} from "rxjs/internal/observable/fromPromise";
 
 const namespace = 'user';
 
@@ -28,21 +29,14 @@ export class UserProvider {
     }
 
     @SubscribeMessage(namespace)
-    onEvent(client, data): Observable<WsResponse<number>> {
-        console.log(data);
-        /*const user = new User();
-         user.email = name;
-         user.password_hash = '';
-         const user_done = this.userRepository.save(user);*/
-        // const response = [user];
-        const response = [1, 2, 3];
-
-        return from(response).pipe(map(res => ({event: namespace, data: res})));
-
-        /*return fromPromise(user_done).pipe(map((data) => {
-         console.log(data);
-         return {event: namespace, data: {}};
-         }));*/
+    onEvent(client, data): Observable<WsResponse<User>> {
+        const user = new User();
+        user.email = 'bla' + Math.random();
+        user.password_hash = '';
+        const user_done = this.userRepository.save(user);
+        return fromPromise(user_done).pipe(map((user_data) => {
+            return {event: namespace, data: user_data};
+        }));
     }
 }
 
