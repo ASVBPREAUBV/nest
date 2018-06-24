@@ -3,8 +3,10 @@ import {User} from "./user.entity";
 import {Connection, Repository} from "typeorm";
 import {SubscribeMessage, WebSocketGateway, WsResponse} from "@nestjs/websockets";
 import {from, Observable} from "rxjs/index";
-import {map} from "rxjs/internal/operators";
 import {websocket_port} from "../config";
+import {map} from "rxjs/operators";
+
+const namespace = 'user';
 
 // Is a Provider
 @Injectable()
@@ -25,19 +27,22 @@ export class UserProvider {
         return await this.userRepository.find();
     }
 
-    @SubscribeMessage('user')
+    @SubscribeMessage(namespace)
     onEvent(client, data): Observable<WsResponse<number>> {
-        const event = 'user';
+        console.log(data);
         /*const user = new User();
-        user.email = name;
-        user.password_hash = '';
-*/
+         user.email = name;
+         user.password_hash = '';
+         const user_done = this.userRepository.save(user);*/
         // const response = [user];
-
-        // return from(response).pipe(map(res => ({event, data: res})));
         const response = [1, 2, 3];
 
-        return from(response).pipe(map(res => ({event, data: res})));
+        return from(response).pipe(map(res => ({event: namespace, data: res})));
+
+        /*return fromPromise(user_done).pipe(map((data) => {
+         console.log(data);
+         return {event: namespace, data: {}};
+         }));*/
     }
 }
 
