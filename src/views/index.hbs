@@ -7,17 +7,27 @@
 <body>
 Index says:
 {{ message }} & {{id}}
+<button>Click me</button>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.2.1/rxjs.umd.min.js"></script>
 <script>
+    const {fromEvent} = rxjs;
+
+    const button = document.querySelector('button');
+    fromEvent(button, 'click')
+            .subscribe(() => socket.emit('user', {name: 'name/user'}));
+
     var socket = io('http://localhost:3001');
     socket.on('connect', function () {
 
     });
 
-    socket.emit('user', {name: 'name/user'});
     socket.on('user', function (data) {
         console.log(data);
+        var p = document.createElement("p");
+        p.innerHTML = 'Usename :' + data.email;
+        document.body.appendChild(p);
     });
 
     socket.emit('event', {name: 'name/event'});

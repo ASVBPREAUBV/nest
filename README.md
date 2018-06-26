@@ -48,10 +48,13 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-Goals:
 
- - [ ] Init correct dev DB with Migration-Options
- - [ ] Come up with a proper websocket concept
- - [ ] Better User Model
- - [ ] ACL
+
+## Problems:
+
+ - [ ] DB has to work from init (SQLlite out of the Box)
+ - [ ] Websocket libary has to be ready and working for frontend
+ - [ ] Usermodel has to be complete
+ - [ ] ACL 
  - [ ] Auth
+
