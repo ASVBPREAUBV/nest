@@ -52,9 +52,22 @@ $ npm run test:cov
 
 ## Problems:
 
- - [ ] DB has to work from init (SQLlite out of the Box)
+ - [ ] DB has to work from init
  - [ ] Websocket libary has to be ready and working for frontend
  - [ ] Usermodel has to be complete
  - [ ] ACL 
  - [ ] Auth
 
+## Ideas:
+
+├── Websocket
+│   ├── render frontend completely on server and inject websocket connections
+│   ├── preproduce js-lib on server on prod-startup and deliver it through server
+│   ├── work on ws-frontend-code seperately
+│   └── produce js-lib for frontend when needed
+
+## TODOs:
+
+├── DB
+│   ├── check if DB has correct Database
+│   └── check if DB is empty
