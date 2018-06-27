@@ -2,7 +2,7 @@
 
 ## Description
 
-description
+Example Webapplication build in [nest](https://nestjs.com/)
 
 ## Installation
 
@@ -67,6 +67,7 @@ $ npm run test:cov
 
 ## TODOs:
 
+- General
+    - implement generic model maybe as interface
 - DB
     - check if DB has correct Database
-    - check if DB is empty
