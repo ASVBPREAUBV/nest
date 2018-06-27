@@ -59,7 +59,8 @@ $ npm run test:cov
  - [ ] Auth
 
 ## Ideas:
-
+$ tree
+.
 ├── Websocket
 │   ├── render frontend completely on server and inject websocket connections
 │   ├── preproduce js-lib on server on prod-startup and deliver it through server
