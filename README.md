@@ -71,3 +71,6 @@ $ npm run test:cov
     - implement generic model maybe as interface
 - DB
     - check if DB has correct Database
+- Websocket
+    - produce js code on the fly with browserify for development
+    - pruduce static frontend-code in production
