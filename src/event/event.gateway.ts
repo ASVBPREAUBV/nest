@@ -1,9 +1,9 @@
 import {SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
 import {from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {websocket_port} from '../config';
+import {host_websocket_port} from '../config';
 
-@WebSocketGateway(websocket_port)
+@WebSocketGateway(host_websocket_port)
 export class EventGateway {
     private readonly event_name:string = 'event';
 

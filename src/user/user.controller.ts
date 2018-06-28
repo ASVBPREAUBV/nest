@@ -1,20 +1,21 @@
-import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
-import {UserProvider} from './user.provider';
-import {User} from './user.entity';
-import {SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
-import {from, Observable} from 'rxjs/index';
-import {map} from 'rxjs/internal/operators';
+import {Controller, Get, HttpCode, Param, Post, Render} from "@nestjs/common";
+import {UserProvider} from "./user.provider";
+import {User} from "./user.entity";
+import {namespace} from "./user.config";
+import * as browserify from "browserify";
+import * as tsify from "tsify";
 
-@Controller('user')
+
+@Controller(namespace)
 export class UserController {
     constructor(private readonly userProvider: UserProvider) {
     }
 
-    @Get()
+    /*@Get()
     async allUser(): Promise<User[]> {
         return this.userProvider.findAll();
 
-    }
+    }*/
 
     @Get('/make/:id')
     @Render('index')
@@ -31,6 +32,16 @@ export class UserController {
     @HttpCode(204)
     create() {
         return 'This action adds a new cat';
+    }
+
+    @Get()
+    brow(): string {
+        browserify()
+            .add('test.ts')
+            .plugin('tsify')
+            .bundle()
+            .pipe(process.stdout);
+        return 'asf';
     }
 
 }

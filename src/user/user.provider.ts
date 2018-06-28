@@ -1,17 +1,17 @@
-import {Inject, Injectable} from "@nestjs/common";
-import {User} from "./user.entity";
-import {Connection, Repository} from "typeorm";
-import {SubscribeMessage, WebSocketGateway, WsResponse} from "@nestjs/websockets";
-import {Observable} from "rxjs/index";
-import {websocket_port} from "../config";
-import {map} from "rxjs/operators";
-import {fromPromise} from "rxjs/internal/observable/fromPromise";
+import {Inject, Injectable} from '@nestjs/common';
+import {User} from './user.entity';
+import {Connection, Repository} from 'typeorm';
+import {SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
+import {Observable} from 'rxjs/index';
+import {host_websocket_port} from '../config';
+import {map} from 'rxjs/operators';
+import {fromPromise} from 'rxjs/internal/observable/fromPromise';
 
 const namespace = 'user';
 
 // Is a Provider
 @Injectable()
-@WebSocketGateway(websocket_port)
+@WebSocketGateway(host_websocket_port)
 export class UserProvider {
 
     constructor(@Inject('userDBProviders') private readonly userRepository: Repository<User>) {
@@ -38,6 +38,7 @@ export class UserProvider {
             return {event: namespace, data: user_data};
         }));
     }
+
 }
 
 export const userDBProviders =
