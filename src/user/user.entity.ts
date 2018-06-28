@@ -1,8 +1,8 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
-import {UserInterface} from './user.interface';
+import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {UserInterface} from "./user.interface";
 
 @Entity()
-export class User implements UserInterface{
+export class User implements UserInterface {
     @PrimaryGeneratedColumn()
     id: number;
 
