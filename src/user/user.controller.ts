@@ -1,10 +1,9 @@
-import {Controller, Get, HttpCode, Param, Post, Render} from "@nestjs/common";
-import {UserProvider} from "./user.provider";
-import {User} from "./user.entity";
-import {namespace} from "./user.config";
-import * as browserify from "browserify";
-import * as tsify from "tsify";
-
+import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
+import {UserProvider} from './user.provider';
+import {namespace} from './user.config';
+import * as browserify from 'browserify';
+import * as tsify from 'tsify';
+import * as fs from 'fs';
 
 @Controller(namespace)
 export class UserController {
@@ -12,10 +11,10 @@ export class UserController {
     }
 
     /*@Get()
-    async allUser(): Promise<User[]> {
-        return this.userProvider.findAll();
+     async allUser(): Promise<User[]> {
+     return this.userProvider.findAll();
 
-    }*/
+     }*/
 
     @Get('/make/:id')
     @Render('index')
@@ -35,12 +34,19 @@ export class UserController {
     }
 
     @Get()
-    brow(): string {
+    jsout(): string {
+        const bundleFs = fs.createWriteStream(__dirname + '/bundle.js');
+
         browserify()
-            .add('test.ts')
+            .add(__dirname + '/user.client.ts')
             .plugin('tsify')
             .bundle()
-            .pipe(process.stdout);
+            .pipe(bundleFs);
+
+        bundleFs.on('finish', function() {
+            console.log('finished writing the browserify file');
+        });
+
         return 'asf';
     }
 
