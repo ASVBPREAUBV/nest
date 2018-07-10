@@ -22,7 +22,13 @@ export class UserController {
         return {message: 'Hello world!', id: param.id};
     }
 
-    @Get(':name')
+    @Get('/view')
+    @Render('index')
+    root() {
+        return {message: 'Hello world!', id: "test"};
+    }
+
+    @Get('/create/:name')
     async findOne(@Param() param) {
         return this.userProvider.create(param.name);
     }

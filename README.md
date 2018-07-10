@@ -21,7 +21,7 @@ docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mariadb
 ```
 Create nest db:
 ```bash
-docker exec -it {your docker id} mysql -p nest
+docker exec -it {your docker id} mysql -p
 CREATE DATABASE nest;
 ```
 Start nest
@@ -73,4 +73,4 @@ $ npm run test:cov
     - check if DB has correct Database
 - Websocket
     - produce js code on the fly with browserify for development
-    - pruduce static frontend-code in production
+    - pruduce static frontend-code in production# vue-starter

@@ -31,8 +31,8 @@ export class UserProvider {
     @SubscribeMessage(namespace)
     onEvent(client, data): Observable<WsResponse<User>> {
         const user = new User();
-        user.email = 'bla' + Math.random();
-        user.password_hash = '';
+        user.email = 'random email' + Math.random();
+        user.password_hash = 'random pw' + Math.random();
         const user_done = this.userRepository.save(user);
         return fromPromise(user_done).pipe(map((user_data) => {
             return {event: namespace, data: user_data};
