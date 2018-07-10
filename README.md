@@ -48,7 +48,10 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Status
 
+User View is working but only with static html&js
+-> get ts(js) in view(hbs)
 
 ## Problems:
 
