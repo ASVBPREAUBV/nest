@@ -12,16 +12,15 @@ $ npm install
 
 To run the app you need to run the db with a table called user.
 
-## Running the app
+## Running the app for the first time
 
 Run db for dev:
 ```bash
-docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
-docker run -p 3306:3306 -t -e MYSQL_ROOT_PASSWORD=my-secret-pw mariadb
+docker run  --name my_nest_db -p 3306:3306 -de MYSQL_ROOT_PASSWORD=my-secret-pw mariadb
 ```
 Create nest db:
 ```bash
-docker exec -it {your docker id} mysql -p
+docker exec -it my_nest_db mysql -p
 CREATE DATABASE nest;
 ```
 Start nest
