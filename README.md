@@ -2,7 +2,9 @@
 
 ## Description
 
-Example Webapplication build in [nest](https://nestjs.com/)
+Prototype for Live-Application. 
+Build in [nest](https://nestjs.com/)
+
 
 ## Installation
 
@@ -56,7 +58,7 @@ User View is working but only with static html&js
 
 ## Problems:
 
- - [ ] DB has to work from init
+ - [x] DB has to work from init
  - [ ] Websocket libary has to be ready and working for frontend
  - [ ] Usermodel has to be complete
  - [ ] ACL 
