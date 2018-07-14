@@ -23,14 +23,16 @@ Create nest db:
 docker exec -it my_nest_db mysql -p
 CREATE DATABASE nest;
 ```
-Start nest
+
 ```bash
 # development
 $ npm run start 
 
-# watch mode
+# OR watch mode
 $ npm run start:dev
 
+
+## Production
 # production mode
 npm run start:prod
 ```
