@@ -1,6 +1,6 @@
 # nest 
 ![circleci](https://circleci.com/gh/ASVBPREAUBV/nest.png?circle-token=:circle-token)
-
+[![Coverage Status](https://coveralls.io/repos/github/ASVBPREAUBV/nest/badge.svg?branch=master)](https://coveralls.io/github/ASVBPREAUBV/nest?branch=master)
 ## Description
 
 Prototype for Live-Application. 
@@ -75,6 +75,8 @@ User View is working but only with static html&js
 ## TODOs:
 
 - General
+    - switch to travis ci 
+    - add coveralls to travis ci 
     - implement generic model maybe as interface
 - DB
     - check if DB has correct Database
