@@ -1,11 +1,8 @@
 import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
 import {UserProvider} from './user.provider';
 import {namespace} from './user.config';
-import * as browserify from 'browserify';
-import * as tsify from 'tsify';
-import * as fs from 'fs';
-
 @Controller(namespace)
+
 export class UserController {
     constructor(private readonly userProvider: UserProvider) {
     }
@@ -24,8 +21,8 @@ export class UserController {
 
     @Get('/view')
     @Render('index')
-    root() {
-        return {message: 'Hello world!', id: "test"};
+    view() {
+        return {message: 'Hello world!', id: 'test'};
     }
 
     @Get('/create/:name')
@@ -38,22 +35,4 @@ export class UserController {
     create() {
         return 'This action adds a new cat';
     }
-
-    @Get()
-    jsout(): string {
-        const bundleFs = fs.createWriteStream(__dirname + '/bundle.js');
-
-        browserify()
-            .add(__dirname + '/user.client.ts')
-            .plugin('tsify')
-            .bundle()
-            .pipe(bundleFs);
-
-        bundleFs.on('finish', function() {
-            console.log('finished writing the browserify file');
-        });
-
-        return 'asf';
-    }
-
 }
