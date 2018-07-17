@@ -1,32 +1,32 @@
-import {User} from "./user.entity";
-import {Observable} from "rxjs/index";
-import * as socketIo from "socket.io-client";
-import {host_websocket_url} from "../config";
-import {namespace} from "./user.config";
+import {User} from './user.entity';
+import {Observable} from 'rxjs/index';
+import * as socketIo from 'socket.io-client';
+import {host_websocket_url} from '../config';
+import {namespace} from './user.config';
 
 export class SocketService {
     private socket;
 
     public initSocket(): void {
-        console.log('initSocket')
+        console.log('initSocket',host_websocket_url);
 
         this.socket = socketIo(host_websocket_url);
     }
 
     public send(message: User): void {
-        console.log('send', message)
+        console.log('send', message);
         this.socket.emit(namespace, message);
     }
 
     public onMessage(): Observable<User> {
-        console.log('onMessage')
+        console.log('onMessage');
         return new Observable<User>(observer => {
             this.socket.on(namespace, (data: User) => observer.next(data));
         });
     }
 
     public onEvent(event: Event): Observable<any> {
-        console.log('onEvent')
+        console.log('onEvent');
         return new Observable<Event>(observer => {
             this.socket.on(event, () => observer.next());
         });
