@@ -1,8 +1,9 @@
 import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
 import {UserProvider} from './user.provider';
 import {namespace} from './user.config';
-@Controller(namespace)
+import {build} from './user.build';
 
+@Controller(namespace)
 export class UserController {
     constructor(private readonly userProvider: UserProvider) {
     }
@@ -22,6 +23,7 @@ export class UserController {
     @Get('/view')
     @Render('index')
     view() {
+        build();
         return {message: 'Hello world!', id: 'test'};
     }
 
