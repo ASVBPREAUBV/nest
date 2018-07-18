@@ -8,8 +8,7 @@ export class SocketService {
     private socket;
 
     public initSocket(): void {
-        console.log('initSocket',host_websocket_url);
-
+        console.log('initSocket connection to: ',host_websocket_url);
         this.socket = socketIo(host_websocket_url);
     }
 

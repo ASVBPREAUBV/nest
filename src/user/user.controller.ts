@@ -2,6 +2,7 @@ import {Controller, Get, HttpCode, Param, Post, Render} from '@nestjs/common';
 import {UserProvider} from './user.provider';
 import {namespace} from './user.config';
 import {build} from './user.build';
+build();
 
 @Controller(namespace)
 export class UserController {
@@ -23,7 +24,6 @@ export class UserController {
     @Get('/view')
     @Render('index')
     view() {
-        build();
         return {message: 'Hello world!', id: 'test'};
     }
 
