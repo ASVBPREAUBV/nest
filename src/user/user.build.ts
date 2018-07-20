@@ -4,10 +4,10 @@ import * as path from "path";
 
 export const build = () => {
     const absolutePath = path.resolve('./src/user/user.client.ts');
-    const absolutePath_out = path.resolve('./src/user/static/user.bundle.js');
+    const absolutePath_out = path.resolve('./src/static/user.bundle.js');
     const bundleFs = fs.createWriteStream(absolutePath_out);
 
-    console.log(absolutePath);
+    //console.log(absolutePath);
 
     browserify()
         .add(absolutePath)

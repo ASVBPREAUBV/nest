@@ -22,7 +22,7 @@ export class UserController {
     }
 
     @Get('/view')
-    @Render('index')
+    @Render('user')
     view() {
         return {message: 'Hello world!', id: 'test'};
     }
