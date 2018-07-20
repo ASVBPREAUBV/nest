@@ -9,9 +9,8 @@ export class UserGateway {
 
     @SubscribeMessage(namespace)
     onEvent(client, data): Observable<WsResponse<number>> {
-        const event = 'event';
         const response = [99, 98, 97];
-        console.log(data);
+        console.log('user gateway @SubscribeMessage(namespace)', data);
 
         return from(response).pipe(map(res => ({'event': namespace, data: res})));
     }
