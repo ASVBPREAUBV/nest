@@ -1,7 +1,7 @@
-import {SubscribeMessage, WebSocketGateway, WsResponse} from '@nestjs/websockets';
-import {from, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {host_websocket_port} from '../config';
+import {SubscribeMessage, WebSocketGateway, WsResponse} from "@nestjs/websockets";
+import {from, Observable} from "rxjs";
+import {map} from "rxjs/operators";
+import {host_websocket_port} from "../config";
 import {namespace} from "./user.config";
 
 @WebSocketGateway(host_websocket_port)
@@ -13,6 +13,6 @@ export class UserGateway {
         const response = [99, 98, 97];
         console.log(data);
 
-        return from(response).pipe(map(res => ({event, data: res})));
+        return from(response).pipe(map(res => ({'event': namespace, data: res})));
     }
 }
