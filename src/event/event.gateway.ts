@@ -11,7 +11,7 @@ export class EventGateway {
     onEvent(client, data): Observable<WsResponse<number>> {
         const event = 'event';
         const response = [99, 98, 97];
-        console.log(data);
+        console.log('EventGateway onEvent', data);
 
         return from(response).pipe(map(res => ({event, data: res})));
     }

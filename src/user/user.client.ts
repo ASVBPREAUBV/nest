@@ -7,9 +7,16 @@ import {namespace} from './user.config';
 export class SocketService {
     private socket;
 
+    constructor(){
+        console.log('SocketService constructor()');
+    }
+
     public initSocket(): void {
         console.log('initSocket connection to: ',host_websocket_url);
         this.socket = socketIo(host_websocket_url);
+        this.socket.on(namespace, (data) => {
+            console.log('this.socket.on',data);
+        });
     }
 
     public send(message: User): void {
