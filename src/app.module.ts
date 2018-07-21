@@ -4,11 +4,9 @@ import {AppService} from './app.service';
 import {UserModule} from './user/user.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseProviders} from './database/database.providers';
-import {EventModule} from './event/event.module';
-import {SocketModule} from "./socket/socket.module";
 
 @Module({
-    imports: [DatabaseModule, UserModule, EventModule, SocketModule],
+    imports: [DatabaseModule, UserModule],
     controllers: [AppController],
     providers: [AppService],
 })
