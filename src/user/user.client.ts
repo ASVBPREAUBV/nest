@@ -41,4 +41,4 @@ export class SocketService {
 
 const ss = new SocketService();
 ss.initSocket();
-ss.send({id: 234, email: 'sfd', password_hash: 'sdf'});
+ss.send({id: 123, email: 'sfd', password_hash: 'sdf'});

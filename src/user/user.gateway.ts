@@ -1,18 +1,22 @@
 import {SubscribeMessage, WebSocketGateway, WsResponse} from "@nestjs/websockets";
-import {from, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {host_websocket_port} from "../config";
 import {namespace} from "./user.config";
 import {User} from "./user.entity";
+import {UserProvider} from "./user.provider";
+import {async} from "rxjs/internal/scheduler/async";
+import {fromPromise} from "rxjs/internal/observable/fromPromise";
 
 @WebSocketGateway(host_websocket_port)
 export class UserGateway {
 
-    @SubscribeMessage(namespace)
-    onEvent(client, data): Observable<WsResponse<User>> {
-        const response = [{id: 999, email: 'test@example', password_hash: 'pw'}];
-        console.log('UserGateway onEvent', data);
+    constructor(private readonly userProvider: UserProvider) {
+    }
 
-        return from(response).pipe(map(res => ({event: namespace, data: res})));
+    @SubscribeMessage(namespace)
+    onCreateEvent(client, request: User): Observable<WsResponse<User>> {
+        const userObserver = fromPromise(this.userProvider.create(request));
+        return userObserver.pipe(map(res => ({event: namespace, data: res})));
     }
 }
