@@ -60,7 +60,7 @@ User View is working but only with static html&js
 ## Problems:
 
  - [x] DB has to work from init
- - [ ] Websocket libary has to be ready and working for frontend
+ - [x] Websocket libary has to be ready and working for frontend
  - [ ] Usermodel has to be complete
  - [ ] ACL 
  - [ ] Auth
