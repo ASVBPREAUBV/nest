@@ -52,34 +52,24 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-## Status
-
-User View is working but only with static html&js
--> get ts(js) in view(hbs)
-
-## Problems:
-
- - [x] DB has to work from init
- - [x] Websocket libary has to be ready and working for frontend
- - [ ] Usermodel has to be complete
- - [ ] ACL 
- - [ ] Auth
-
-## Ideas:
-- Websocket
-    - render frontend completely on server and inject websocket connections
-    - preproduce js-lib on server on prod-startup and deliver it through server
-    - work on ws-frontend-code seperately
-    - produce js-lib for frontend when needed
 
 ## TODOs:
 
 - General
-    - switch to travis ci 
-    - add coveralls to travis ci 
-    - implement generic model maybe as interface
+    - [ ] switch to travis ci 
+    - [ ] add coveralls to travis ci 
+    - [ ] implement generic model maybe as interface
 - DB
-    - check if DB has correct Database
+    - [ ] check if DB has correct Database
+    - [x] DB has to work from init
+    
+- Models
+    - [ ] Complete First Model CRUD Workflow
+    - [ ] Complete User Model
+    - [ ] ACL
+    - [ ] Auth
+    
 - Websocket
-    - produce js code on the fly with browserify for development
-    - pruduce static frontend-code in production# vue-starter
+    - [x] produce js code on the fly with browserify for development
+    - [x] Websocket libary has to be ready and working for frontend
+    - [ ] produce static frontend-code in production
