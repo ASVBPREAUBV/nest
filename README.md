@@ -59,6 +59,12 @@ $ npm run test:cov
     - [ ] switch to travis ci 
     - [ ] add coveralls to travis ci 
     - [ ] implement generic model maybe as interface
+    
+- Loggin
+    - [x] init winston
+    - [ ] init correct file association
+    - [ ] check how to implement logging levels
+    
 - DB
     - [ ] check if DB has correct Database
     - [x] DB has to work from init
