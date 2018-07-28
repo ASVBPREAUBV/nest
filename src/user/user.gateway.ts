@@ -1,7 +1,7 @@
 import {SubscribeMessage, WebSocketGateway, WsResponse} from "@nestjs/websockets";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {host_websocket_port} from "../config";
+import {host_websocket_port} from "../config/constants";
 import {namespace} from "./user.config";
 import {User} from "./user.entity";
 import {UserProvider} from "./user.provider";

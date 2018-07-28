@@ -2,7 +2,7 @@ import {Inject, Injectable} from "@nestjs/common";
 import {User} from "./user.entity";
 import {Connection, Repository} from "typeorm";
 import {WebSocketGateway} from "@nestjs/websockets";
-import {host_websocket_port} from "../config";
+import {host_websocket_port} from "../config/constants";
 
 const namespace = 'user';
 

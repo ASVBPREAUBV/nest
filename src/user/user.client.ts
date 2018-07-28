@@ -1,7 +1,7 @@
 import {User} from './user.entity';
 import {Observable} from 'rxjs/index';
 import * as socketIo from 'socket.io-client';
-import {host_websocket_url} from '../config';
+import {host_websocket_url} from '../config/constants';
 import {namespace} from './user.config';
 
 export class SocketService {
