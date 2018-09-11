@@ -56,9 +56,9 @@ $ npm run test:cov
 ## TODOs:
 
 - General
-    - [ ] switch to travis ci 
+    - [x] switch to travis ci 
     - [ ] add coveralls to travis ci 
-    - [ ] implement generic model maybe as interface
+    - [ ] implement generic model as interface
     
 - Loggin
     - [x] init winston
